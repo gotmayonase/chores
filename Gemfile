@@ -14,6 +14,7 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 gem 'cancan' # or cancancan
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
