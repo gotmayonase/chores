@@ -4,14 +4,15 @@ ActiveAdmin.register Chore do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :name, :user_id, :interval
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
+
+index do
+  id_column
+  column :name
+  column :interval
+  column :user
+  column :last_completed
+  actions
+end
 
 form do |f|
   f.semantic_errors # shows errors on :base
