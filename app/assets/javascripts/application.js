@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

@@ -5,8 +5,7 @@ class ChoresController < ApplicationController
   def complete
     @chore = Chore.find(params[:id])
     if @chore.user = current_user
-      @chore.last_completed = Time.now
-      @chore.save
+      ChoreCompletion.create(chore: @chore, user: current_user)
     end
     redirect_to '/'
   end

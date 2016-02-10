@@ -8,7 +8,12 @@
       <ul class="list-group">
         <% @todo.select { |c| !c.done? }.each do |chore| %>
         <li class="list-group-item chore">
-          <p class="pull-left chore-name"><%= chore.name %></p>
+          <p class="pull-left chore-name <%= 'text-danger' if chore.past_due? %>">
+            <% if chore.past_due? %>
+            <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Past Due!"></span>
+            <% end %>
+            <%= chore.name %>
+          </p>
           <%= link_to 'Mark as Done', complete_chore_path(chore), class: 'btn btn-primary pull-right', method: :post %>
           <div style="clear: both;"></div>
         </li>
