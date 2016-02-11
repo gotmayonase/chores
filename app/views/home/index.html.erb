@@ -1,43 +1,47 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="row">
-      <h2>To-Do</h2>
-      <% if @todo.blank? %>
-      <p>Looks like you're all done!</p>
-      <% else %>
-      <ul class="list-group">
-        <% @todo.select { |c| !c.done? }.each do |chore| %>
-        <li class="list-group-item chore">
-          <p class="pull-left chore-name <%= 'text-danger' if chore.past_due? %>">
-            <% if chore.past_due? %>
-            <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Past Due!"></span>
-            <% end %>
-            <%= chore.name %>
-          </p>
-          <%= link_to 'Mark as Done', complete_chore_path(chore), class: 'btn btn-primary pull-right', method: :post %>
-          <div style="clear: both;"></div>
-        </li>
+      <div class="col-sm-12">
+        <h2>To-Do</h2>
+        <% if @todo.blank? %>
+        <p>Looks like you're all done!</p>
+        <% else %>
+        <ul class="list-group">
+          <% @todo.select { |c| !c.done? }.each do |chore| %>
+          <li class="list-group-item chore">
+            <p class="pull-left chore-name <%= 'text-danger' if chore.past_due? %>">
+              <% if chore.past_due? %>
+              <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Past Due!"></span>
+              <% end %>
+              <%= chore.name %>
+            </p>
+            <%= link_to '<span class="hidden-xs">Mark as</span> Done'.html_safe, complete_chore_path(chore), class: 'btn btn-lg btn-primary pull-right', method: :post %>
+            <div style="clear: both;"></div>
+          </li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
+      </div>
     </div>
 
     <div class="row">
-      <h2>Done</h2>
-      <% if @done.blank? %>
-      <p>Doesn't look like anything is done yet, better get to work.</p>
-      <% else %>
-      <ul class="list-group">
-        <% @done.select { |c| c.done? }.each do |chore| %>
-        <li class="list-group-item chore">
-          <p class="chore-name">
-            <span class="glyphicon glyphicon-ok-sign text-success"></span>
-            <%= chore.name %>
-          </p>
-        </li>
+      <div class="col-sm-12">
+        <h2>Done</h2>
+        <% if @done.blank? %>
+        <p>Doesn't look like anything is done yet, better get to work.</p>
+        <% else %>
+        <ul class="list-group">
+          <% @done.select { |c| c.done? }.each do |chore| %>
+          <li class="list-group-item chore completed-chore">
+            <p class="chore-name">
+              <span class="glyphicon glyphicon-ok-sign text-success"></span>
+              <%= chore.name %>
+            </p>
+          </li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

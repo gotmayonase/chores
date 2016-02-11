@@ -26,6 +26,13 @@ body {
     font-size: 18px;
     font-weight: bold;
     margin: 0;
-    line-height: 34px;
+    line-height: 43px;
+    @include text-overflow();
+    max-width: 75%;
+  }
+  &.completed-chore {
+    .chore-name {
+      max-width: 100%;
+    }
   }
 }

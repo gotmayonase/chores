@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :chores
   has_many :chore_completions
+  has_many :completed_chores, through: :chore_completions, source: :chore
 
-  def to_s
-    email
-  end
 end
